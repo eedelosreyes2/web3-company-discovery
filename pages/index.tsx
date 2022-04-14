@@ -4,34 +4,48 @@ import Layout from '../components/Layout';
 import Post, { PostProps } from '../components/Post';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = [
+  const company = [
+    {
+      id: '0',
+      title: 'Magic Eden',
+      about: 'The leading Solana NFT Marketplace',
+      logoUrl:
+        'https://yt3.ggpht.com/p4xsMYgTH2iQ6nC43SS1N3XpV9XrqNSQJ_wC5TWgVafR3-3RhUOtKhuW1quPCbcQXIygAXxe=s900-c-k-c0x00ffffff-no-rj',
+      tags: ['NFTs'],
+      url: 'https://www.magiceden.io/',
+      socials: {
+        twitter: 'https://twitter.com/MagicEden',
+        discord: 'https://discord.com/invite/b87UnCy6P2',
+      },
+    },
     {
       id: '1',
-      title: 'Prisma is the perfect ORM for Next.js',
-      content:
-        '[Prisma](https://github.com/prisma/prisma) and Next.js go _great_ together!',
-      published: false,
-      author: {
-        name: 'Nikolas Burk',
-        email: 'burk@prisma.io',
+      title: 'OpenSea',
+      about: 'The leading Ethereum NFT Marketplace',
+      logoUrl:
+        'https://d1lss44hh2trtw.cloudfront.net/assets/article/2022/02/19/opensea-nft-marketplace-exploit-nfts-stolen-phishing_feature.jpg',
+      tags: ['NFTs'],
+      url: 'https://www.opensea.io/',
+      socials: {
+        twitter: 'https://twitter.com/opensea',
+        discord: 'https://discord.gg/opensea',
       },
     },
   ];
-  return { props: { feed } };
+  return { props: { company } };
 };
 
 type Props = {
-  feed: PostProps[];
+  company: PostProps[];
 };
 
 const Blog: React.FC<Props> = (props) => {
   return (
     <Layout>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <h1 className="text-3xl font-bold underline pb-3">Web3 Companies</h1>
       <div className="page">
-        <h1>Public Feed</h1>
         <main>
-          {props.feed.map((post) => (
+          {props.company.map((post) => (
             <div key={post.id} className="post">
               <Post post={post} />
             </div>
