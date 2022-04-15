@@ -1,11 +1,56 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+model Post {
+  id        String  @id @default(cuid())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User?   @relation(fields: [authorId], references: [id])
+  authorId  String?
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?  @unique
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  posts     Post[]
+
+  @@map(name: "users")
+}
+
+model Company {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  email       String?  @unique
+  url         String   @unique
+  logoUrl     String?  @unique
+  links       Link[]
+  tags        Tag[]
+  createdAt   DateTime @default(now()) @map(name: "created_at")
+  updatedAt   DateTime @updatedAt @map(name: "updated_at")
+}
+
+model Link {
+  id        String   @id @default(cuid())
+  url       String   @unique
+  type      String?  // Twitter, Instagram, etc. 
+  companies Company? @relation(fields: [companyId], references: [id])
+  companyId String?
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  companies Company? @relation(fields: [companyId], references: [id])
+  companyId String?
 }
