@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import ReactMarkdown from 'react-markdown';
 
-export type CompanyProps = {
+export type CompanyTeaserProps = {
   id: string;
   name: string;
   description: string;
@@ -14,7 +14,9 @@ export type CompanyProps = {
   published: boolean;
 };
 
-const Company: React.FC<{ company: CompanyProps }> = ({ company }) => {
+const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
+  company,
+}) => {
   return (
     <div
       onClick={() => Router.push('/companies/[id]', `/companies/${company.id}`)}
@@ -25,4 +27,4 @@ const Company: React.FC<{ company: CompanyProps }> = ({ company }) => {
   );
 };
 
-export default Company;
+export default CompanyTeaser;
