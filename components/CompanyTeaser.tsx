@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import ReactMarkdown from 'react-markdown';
 
-export type Company = {
+export type CompanyProps = {
   id: string;
   name: string;
   description: string;
@@ -14,18 +14,13 @@ export type Company = {
   published: boolean;
 };
 
-const Company: React.FC<{ company: Company }> = ({ company }) => {
+const Company: React.FC<{ company: CompanyProps }> = ({ company }) => {
   return (
-    <div onClick={() => Router.push('/p/[id]', `/p/${company.id}`)}>
+    <div
+      onClick={() => Router.push('/companies/[id]', `/companies/${company.id}`)}
+    >
       <h2>{company.name}</h2>
-      {/* <small>By {authorName}</small> */}
       <ReactMarkdown children={company.description} />
-      <style jsx>{`
-        div {
-          color: inherit;
-          padding: 2rem;
-        }
-      `}</style>
     </div>
   );
 };

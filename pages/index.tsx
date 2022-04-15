@@ -2,24 +2,24 @@ import React from 'react';
 import { GetStaticProps } from 'next';
 import prisma from '../lib/prisma';
 import Layout from '../components/Layout';
-import Company, { CompanyProps } from '../components/Company';
+import Company, { CompanyProps } from '../components/CompanyTeaser';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.company.findMany();
-  return { props: { feed } };
+  const companies = await prisma.company.findMany();
+  return { props: { companies } };
 };
 
-type CompanyProps = {
-  feed: Company[];
+type Company = {
+  companies: CompanyProps[];
 };
 
-const Blog: React.FC<CompanyProps> = (props) => {
+const Home: React.FC<CompanyProps> = ({ companies }) => {
   return (
     <Layout>
       <h1 className="text-3xl font-bold underline pb-3">Web3 Companies</h1>
       <div className="page">
         <main>
-          {props.feed.map((company) => (
+          {companies.map((company) => (
             <div key={company.id} className="post">
               <Company company={company} />
             </div>
@@ -44,4 +44,4 @@ const Blog: React.FC<CompanyProps> = (props) => {
   );
 };
 
-export default Blog;
+export default Home;
