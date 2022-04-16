@@ -5,7 +5,9 @@ import Layout from '../components/Layout';
 import CompanyTeaser, { CompanyTeaserProps } from '../components/CompanyTeaser';
 
 export const getStaticProps: GetStaticProps = async () => {
-  const companies = await prisma.company.findMany();
+  const companies = await prisma.company.findMany({
+    where: { published: true },
+  });
   return { props: { companies } };
 };
 
@@ -19,14 +21,11 @@ const Feed: React.FC<Props> = ({ companies }) => {
       <h1 className="text-xl font-bold pb-3">Web3 Companies</h1>
       <div className="page">
         <main>
-          {companies.map((company) => (
-            <div
-              key={company.id}
-              className="border border-slate-900 rounded-lg px-5 py-2"
-            >
-              <CompanyTeaser company={company} />
-            </div>
-          ))}
+          {Object.keys(companies).length
+            ? companies.map((company) => (
+                <CompanyTeaser key={company.id} company={company} />
+              ))
+            : ''}
         </main>
       </div>
     </Layout>
