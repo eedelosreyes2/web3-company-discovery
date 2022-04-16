@@ -19,6 +19,7 @@ const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
 }) => {
   return (
     <div
+      className="cursor-pointer"
       onClick={() => Router.push('/companies/[id]', `/companies/${company.id}`)}
     >
       <h2>{company.name}</h2>
