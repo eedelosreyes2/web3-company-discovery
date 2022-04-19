@@ -22,9 +22,13 @@ const Feed: React.FC<Props> = ({ companies }) => {
       <div className="page">
         <main>
           {Object.keys(companies).length
-            ? companies.map((company) => (
-                <CompanyTeaser key={company.id} company={company} />
-              ))
+            ? companies.map((company) =>
+                company.id ? (
+                  <CompanyTeaser key={company.id} company={company} />
+                ) : (
+                  ''
+                )
+              )
             : ''}
         </main>
       </div>
