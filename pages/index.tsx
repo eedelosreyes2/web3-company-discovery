@@ -16,6 +16,8 @@ type Props = {
 };
 
 const Feed: React.FC<Props> = ({ companies }) => {
+  console.log(companies);
+
   return (
     <Layout>
       <h1 className="text-xl font-bold pb-3">Web3 Companies</h1>
