@@ -19,7 +19,7 @@ const Feed: React.FC<Props> = ({ companies }) => {
   return (
     <Layout>
       <div className="flex justify-between">
-        <h1 className="text-xl font-bold pb-3">
+        <h1 className="text-2xl font-bold font-black pb-3">
           Discover and learn about web3 companies
         </h1>
         <div>*Search bar component*</div>

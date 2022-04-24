@@ -1,10 +1,12 @@
 import React from 'react';
-import Router from 'next/router';
 import ReactMarkdown from 'react-markdown';
+import Router from 'next/router';
+import Image from 'next/image';
 
 export type CompanyTeaserProps = {
   id: string;
   name: string;
+  about: string;
   description: string;
   email: string;
   url: string;
@@ -17,13 +19,29 @@ export type CompanyTeaserProps = {
 const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
   company,
 }) => {
+  const { id, name, about, logoUrl, tags } = company;
+
   return (
     <div
-      className="cursor-pointer border border-slate-900 rounded-lg px-5 py-2 my-5"
-      onClick={() => Router.push('/companies/[id]', `/companies/${company.id}`)}
+      className="cursor-pointer bg-slate-800 border border-slate-600 rounded-lg max-w-sm px-5 py-4 my-4"
+      onClick={() => Router.push('/companies/[id]', `/companies/${id}`)}
     >
-      <h2>{company.name}</h2>
-      <ReactMarkdown children={company.description} />
+      <div className="flex items-center">
+        {logoUrl ? (
+          <div className="pr-2">
+            <Image
+              loader={() => logoUrl}
+              src={logoUrl}
+              width={48}
+              height={48}
+            />
+          </div>
+        ) : (
+          ''
+        )}
+        <h2>{name}</h2>
+      </div>
+      <div className="text-slate-400">{about}</div>
     </div>
   );
 };
