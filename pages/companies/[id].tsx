@@ -8,6 +8,7 @@ import { CompanyTeaserProps } from '../../components/CompanyTeaser';
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const company = await prisma.company.findMany({
     where: { id: params.id.toString() },
+    include: { links: true, tags: true },
   });
 
   return { props: { company } };
@@ -29,12 +30,15 @@ const CompanyPage: React.FC<Props> = ({ company }) => {
         <p>{email}</p>
         <p>{url}</p>
         {logoUrl ? (
-          <Image src={logoUrl} width={150} height={150} />
+          <Image
+            loader={() => logoUrl}
+            src={logoUrl}
+            width={150}
+            height={150}
+          />
         ) : (
           'No logo URL provided'
         )}
-        <p>{links}</p>
-        <p>{tags}</p>
       </div>
     </Layout>
   );
