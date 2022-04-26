@@ -24,7 +24,7 @@ const Icon = () => {
 
 const Search: React.FC = () => {
   return (
-    <div className="flex h-14 min-w-[30%] border-b border-slate-600">
+    <div className="flex h-14 min-w-[27%] border-b border-slate-600">
       <Icon />
       <input
         type="text"
