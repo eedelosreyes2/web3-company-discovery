@@ -7,6 +7,7 @@ import CompanyTeaser, { CompanyTeaserProps } from '../components/CompanyTeaser';
 export const getStaticProps: GetStaticProps = async () => {
   const companies = await prisma.company.findMany({
     where: { published: true },
+    include: { links: true, tags: true },
   });
   return { props: { companies } };
 };
@@ -16,22 +17,20 @@ type Props = {
 };
 
 const Feed: React.FC<Props> = ({ companies }) => {
-  console.log(companies);
-
   return (
     <Layout>
-      <h1 className="text-xl font-bold pb-3">Web3 Companies</h1>
+      <div className="flex justify-between">
+        <h1 className="text-2xl font-bold font-black pb-3">
+          Discover and learn about web3 companies
+        </h1>
+        <div>*Search bar component*</div>
+      </div>
       <div className="page">
         <main>
-          {Object.keys(companies).length
-            ? companies.map((company) =>
-                company.id ? (
-                  <CompanyTeaser key={company.id} company={company} />
-                ) : (
-                  ''
-                )
-              )
-            : ''}
+          {companies &&
+            companies.map((company) => (
+              <CompanyTeaser key={company.id} company={company} />
+            ))}
         </main>
       </div>
     </Layout>
