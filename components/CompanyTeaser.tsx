@@ -11,6 +11,7 @@ export type CompanyTeaserProps = {
   url: string;
   logoUrl: string;
   links: Object[];
+  blockchains: Object[];
   tags: Object[];
   published: boolean;
 };
@@ -28,7 +29,7 @@ const contentfulLoader = ({ src, quality, width }) => {
 const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
   company,
 }) => {
-  const { id, name, about, logoUrl, tags } = company;
+  const { id, name, about, logoUrl, blockchains, tags } = company;
 
   return (
     <div
