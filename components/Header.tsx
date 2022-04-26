@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { typeform } from '../pages/data';
 
 const Header: React.FC = () => {
@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     router.pathname === pathname;
 
   return (
-    <nav className="flex justify-between py-10">
+    <nav className="flex justify-between items-center py-10">
       <Link href="/">
         <a className="bold" data-active={isActive('/')}>
           <Image src="/logo.png" width={36} height={48} />
