@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    h3 {
+        @apply text-2xl font-semibold text-slate-100;
+    }
+
+    h4 {
+        @apply text-xl font-semibold text-slate-100;
+    }
+
+    p {
+        @apply text-base text-slate-400 leading-6;
+    }
+}
+
+@layer components {
+    .badge {
+        @apply inline-flex items-center font-medium tracking-wide text-sm px-3 py-0.5 bg-slate-700 text-slate-400 rounded-full;
+    }
+}
+
+.backdrop {
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+    background: #000000e1;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    /* background: rgba(0, 0, 0, 0.7); */
+    /* z-index: 30; */
+}
