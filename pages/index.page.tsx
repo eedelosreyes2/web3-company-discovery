@@ -21,7 +21,7 @@ const Feed: React.FC<Props> = ({ companies }) => {
   return (
     <Layout>
       <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-        <h2 className="max-w-[40%] font-black pb-3">
+        <h2 className="md:max-w-[50%] lg:max-w-[40%] font-black pb-3">
           Discover and learn about web3 companies
         </h2>
         <Search />
