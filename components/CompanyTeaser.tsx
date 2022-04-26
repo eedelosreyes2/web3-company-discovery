@@ -10,8 +10,8 @@ export type CompanyTeaserProps = {
   email: string;
   url: string;
   logoUrl: string;
-  links: object;
-  tags: object;
+  links: Object[];
+  tags: Object[];
   published: boolean;
 };
 
@@ -43,10 +43,10 @@ const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
         {tags &&
           tags.map((tag) => (
             <div
-              key={tag.id}
+              key={tag['id']}
               className="text-slate-400 bg-slate-700 border border-slate-600 rounded-xl px-3 mr-2"
             >
-              {tag.name}
+              {tag['name']}
             </div>
           ))}
       </div>
