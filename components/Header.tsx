@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { typeform } from '../pages/data';
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const Header: React.FC = () => {
           <Image src="/logo.png" width={36} height={48} />
         </a>
       </Link>
-      <Link href="https://google.com">
+      <Link href={typeform}>
         <a
           className="bold text-slate-400 text-sm"
           target="_blank"
