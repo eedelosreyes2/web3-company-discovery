@@ -6,6 +6,9 @@
   body {
     @apply bg-slate-900 text-white lg:max-w-6xl m-auto;
   }
+  h2 {
+    @apply text-4xl font-semibold text-slate-100;
+  }
   h3 {
     @apply text-2xl font-semibold text-slate-100;
   }
