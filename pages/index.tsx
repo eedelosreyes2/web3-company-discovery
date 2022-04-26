@@ -25,13 +25,11 @@ const Feed: React.FC<Props> = ({ companies }) => {
         </h1>
         <div>*Search bar component*</div>
       </div>
-      <div className="page">
-        <main>
-          {companies &&
-            companies.map((company) => (
-              <CompanyTeaser key={company.id} company={company} />
-            ))}
-        </main>
+      <div className="w-fit float-right md:grid grid-cols-2 gap-5 mt-5">
+        {companies &&
+          companies.map((company) => (
+            <CompanyTeaser key={company.id} company={company} />
+          ))}
       </div>
     </Layout>
   );

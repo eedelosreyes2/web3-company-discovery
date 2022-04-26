@@ -22,7 +22,7 @@ const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
 
   return (
     <div
-      className="relative cursor-pointer bg-slate-800 border border-slate-600 rounded-lg h-48 max-w-sm px-5 pt-4 my-4"
+      className="relative hover:bg-slate-100 cursor-pointer bg-slate-800 border border-slate-600 rounded-lg h-48 max-w-sm px-5 pt-4 mb-5 md:mb-0"
       onClick={() => Router.push('/companies/[id]', `/companies/${id}`)}
     >
       <div className="flex items-center">
