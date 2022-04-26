@@ -52,10 +52,7 @@ const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
       <div className="flex absolute bottom-4 pt-3">
         {tags &&
           tags.map((tag) => (
-            <div
-              key={tag['id']}
-              className="text-sm text-slate-400 bg-slate-700 border border-slate-600 rounded-xl px-3 mr-2"
-            >
+            <div key={tag['id']} className="pill">
               {tag['name']}
             </div>
           ))}
