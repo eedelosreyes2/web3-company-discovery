@@ -22,7 +22,11 @@ const Icon = () => {
   );
 };
 
-const Search: React.FC = () => {
+type Props = {
+  handleSearch: React.ChangeEventHandler<HTMLInputElement>;
+};
+
+const Search: React.FC<Props> = ({ handleSearch }) => {
   return (
     <div className="flex h-14 min-w-full md:min-w-[27%] border-b border-slate-600">
       <Icon />
@@ -30,6 +34,7 @@ const Search: React.FC = () => {
         type="text"
         className="focus:placeholder:text-slate-400  placeholder:text-white bg-transparent outline-none w-full"
         placeholder="Search companies"
+        onChange={handleSearch}
       />
     </div>
   );
