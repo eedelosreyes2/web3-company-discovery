@@ -2,43 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "Archivo_Extended_Black";
+    src: url("/fonts/Archivo_Expanded-Black.ttf");
+}
+
 @layer base {
-  body {
-    @apply bg-slate-900 text-white lg:max-w-6xl m-auto;
-  }
-  h2 {
-    @apply text-4xl font-semibold text-slate-100;
-  }
-  h3 {
-    @apply text-2xl font-semibold text-slate-100;
-  }
-  h4 {
-    @apply text-xl font-semibold text-slate-100;
-  }
-  p {
-    @apply text-base text-slate-400 leading-6;
-  }
+    body {
+        @apply bg-slate-900 text-white lg:max-w-6xl m-auto;
+    }
+    h2 {
+        @apply text-4xl font-semibold text-slate-100;
+    }
+    h3 {
+        @apply text-2xl font-semibold text-slate-100;
+    }
+    h4 {
+        @apply text-xl font-semibold text-slate-100;
+    }
+    p {
+        @apply text-base text-slate-400 leading-6;
+    }
 }
 
 @layer components {
-  .badge {
-    @apply inline-flex items-center font-medium tracking-wide text-sm px-3 py-0.5 bg-slate-700 text-slate-400 rounded-full;
-  }
-  .pill {
-    @apply text-sm text-slate-400 bg-slate-700 border border-slate-600 rounded-xl px-3 mr-2;
-  }
+    .badge {
+        @apply inline-flex items-center font-medium tracking-wide text-sm px-3 py-0.5 bg-slate-700 text-slate-400 rounded-full;
+    }
+    .pill {
+        @apply text-sm text-slate-400 bg-slate-700 border border-slate-600 rounded-xl px-3 mr-2;
+    }
 }
 
 .backdrop {
-  -webkit-overflow-scrolling: touch;
-  -webkit-tap-highlight-color: transparent;
-  background: #000000e1;
-  bottom: 0;
-  left: 0;
-  overflow: auto;
-  position: fixed;
-  right: 0;
-  top: 0;
-  /* background: rgba(0, 0, 0, 0.7); */
-  /* z-index: 30; */
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
+    background: #000000e1;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 30;
+    /* background: rgba(0, 0, 0, 0.7); */
+    /* z-index: 30; */
+}
+
+.headline {
+    font-family: "Archivo_Extended_Black";
+    font-size: 32px;
+    line-height: 110%;
+    max-width: 486px;
 }

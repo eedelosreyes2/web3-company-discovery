@@ -1,9 +1,24 @@
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
-const Modal = ({ handleClose }) => {
+const contentfulLoader = ({ src, quality, width }) => {
+    const params = [`w=${width}`];
+
+    if (quality) {
+        params.push(`q=${quality}`);
+    }
+
+    return `${src}?${params.join("&")}`;
+};
+
+const Modal = ({ handleClose, company }) => {
+    const { id, description, name, about, logoUrl, blockchains, tags } =
+        company;
+
+    console.log(company);
+
     return (
         <motion.div
-            // onClick={handleClose}
             className="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -46,9 +61,15 @@ const Modal = ({ handleClose }) => {
                     {/* content */}
                     <div>
                         <div className="header flex items-center space-x-4">
+                            {/* <Image
+                                loader={contentfulLoader}
+                                src={logoUrl}
+                                width={48}
+                                height={48}
+                            /> */}
                             <div className="w-24 h-24 rounded bg-slate-400"></div>
                             <div>
-                                <h3 className="text-2xl mb-1">Mirror</h3>
+                                <h3 className="text-2xl mb-1">{name}</h3>
                                 <p className="mb-3">
                                     The essential web3 toolkit for sharing and
                                     funding anything.{" "}
@@ -148,23 +169,7 @@ const Modal = ({ handleClose }) => {
                         <hr className="my-6 border-t border-slate-700" />
                         <div className="flex flex-col space-y-3">
                             <h4>About</h4>
-                            <p>
-                                Mirror a publishing platform for writers that
-                                leverages cryptocurrency and blockchain
-                                technology. Through a decentralized, user-owned,
-                                crypto-based network, Mirror is revolutionizing
-                                the way we express, share, and monetize our
-                                thoughts. space.
-                            </p>
-                            <p>
-                                This unique publishing platform was created by
-                                Denis Nazarov in 2020. It has been regarded as
-                                the Medium of Web3, simply because of its
-                                functionality. However, this decentralized
-                                writing platform developed to help creators
-                                connect with their target audience is an
-                                innovative initiative in the Web3
-                            </p>
+                            <p>{description}</p>
                         </div>
                     </div>
                 </motion.div>
