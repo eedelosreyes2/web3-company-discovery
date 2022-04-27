@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import prisma from '../lib/prisma';
 import Layout from '../components/Layout';
 import Search from '../components/Search';
-import CompanyTeaser, { CompanyTeaserProps } from '../components/CompanyTeaser';
+import Teaser, { TeaserProps } from '../components/Teaser';
 
 export const getStaticProps: GetStaticProps = async () => {
   const companies = await prisma.company.findMany({
@@ -14,7 +14,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 type Props = {
-  companies: CompanyTeaserProps[];
+  companies: TeaserProps[];
 };
 
 const Home: React.FC<Props> = ({ companies }) => {
@@ -39,7 +39,7 @@ const Home: React.FC<Props> = ({ companies }) => {
       <div className="w-fit mx-auto md:float-right md:grid grid-cols-2 gap-5">
         {results &&
           results.map((company) => (
-            <CompanyTeaser key={company.id} company={company} />
+            <Teaser key={company.id} company={company} />
           ))}
       </div>
     </Layout>

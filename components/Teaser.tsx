@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import Image from 'next/image';
 
-export type CompanyTeaserProps = {
+export type TeaserProps = {
   id: string;
   name: string;
   about: string;
@@ -26,14 +26,12 @@ const contentfulLoader = ({ src, quality, width }) => {
   return `${src}?${params.join('&')}`;
 };
 
-const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
-  company,
-}) => {
+const Teaser: React.FC<{ company: TeaserProps }> = ({ company }) => {
   const { id, name, about, logoUrl, blockchains, tags } = company;
 
   return (
     <div
-      className="transform transition duration-200 hover:scale-105 relative cursor-pointer bg-slate-800 border border-slate-700 rounded-lg h-48 max-w-sm px-5 pt-4 mb-5 md:mb-0"
+      className="transform transition duration-200 hover:scale-105 relative cursor-pointer bg-slate-800 border border-slate-700 rounded-lg h-48 w-96 max-w-sm px-5 pt-4 mb-5 md:mb-0"
       onClick={() => Router.push('/companies/[id]', `/companies/${id}`)}
     >
       <div className="flex items-center">
@@ -62,4 +60,4 @@ const CompanyTeaser: React.FC<{ company: CompanyTeaserProps }> = ({
   );
 };
 
-export default CompanyTeaser;
+export default Teaser;

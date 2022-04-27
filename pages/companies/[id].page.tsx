@@ -3,7 +3,7 @@ import prisma from '../../lib/prisma';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Layout from '../../components/Layout';
-import { CompanyTeaserProps } from '../../components/CompanyTeaser';
+import { TeaserProps } from '../../components/Teaser';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const company = await prisma.company.findMany({
@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 type Props = {
-  company: CompanyTeaserProps;
+  company: TeaserProps;
 };
 
 const CompanyPage: React.FC<Props> = ({ company }) => {
