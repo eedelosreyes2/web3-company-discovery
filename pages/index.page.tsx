@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GetStaticProps } from 'next';
 import prisma from '../lib/prisma';
 import Layout from '../components/Layout';
@@ -17,18 +17,28 @@ type Props = {
   companies: CompanyTeaserProps[];
 };
 
-const Feed: React.FC<Props> = ({ companies }) => {
+const Home: React.FC<Props> = ({ companies }) => {
+  const [results, setResults] = useState(companies);
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    const searchedCompanies = Object.values(companies).filter((val) =>
+      val.name.toLowerCase().startsWith(query.toLowerCase())
+    );
+    setResults(searchedCompanies);
+  };
+
   return (
     <Layout>
       <div className="flex flex-col md:flex-row items-center justify-between mb-8">
         <h2 className="md:max-w-[50%] lg:max-w-[40%] font-black pb-3">
           Discover and learn about web3 companies
         </h2>
-        <Search />
+        <Search handleSearch={handleSearch} />
       </div>
       <div className="w-fit mx-auto md:float-right md:grid grid-cols-2 gap-5">
-        {companies &&
-          companies.map((company) => (
+        {results &&
+          results.map((company) => (
             <CompanyTeaser key={company.id} company={company} />
           ))}
       </div>
@@ -36,4 +46,4 @@ const Feed: React.FC<Props> = ({ companies }) => {
   );
 };
 
-export default Feed;
+export default Home;

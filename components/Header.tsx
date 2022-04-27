@@ -13,7 +13,7 @@ const Header: React.FC = () => {
     <nav className="flex justify-between items-center py-10">
       <Link href="/">
         <a className="bold" data-active={isActive('/')}>
-          <Image src="/logo.png" width={36} height={48} />
+          <Image src="/logo.png" width={48} height={48} />
         </a>
       </Link>
       <Link href={typeform}>
