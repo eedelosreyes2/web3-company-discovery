@@ -56,11 +56,13 @@ model VerificationToken {
 model Company {
   id          String  @id @default(cuid())
   name        String  @unique
+  about       String?
   description String?
   email       String? @unique
   url         String  @unique
   logoUrl     String? @unique
   links       Link[]
+  blockchains Blockchain[]
   tags        Tag[]
   published   Boolean @default(false)
 }
@@ -69,6 +71,13 @@ model Link {
   id        String   @id @default(cuid())
   url       String   @unique
   type      String? // Twitter, Instagram, etc. 
+  companies Company? @relation(fields: [companyId], references: [id])
+  companyId String?
+}
+
+model Blockchain {
+  id        String   @id @default(cuid())
+  name      String   @unique
   companies Company? @relation(fields: [companyId], references: [id])
   companyId String?
 }
