@@ -7,6 +7,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <SessionProvider session={pageProps.session}>
       <Head>
+        <title>Discover Web3 Companies</title>
         <link rel="shortcut icon" href="/logo.png" />
       </Head>
       <Component {...pageProps} />
