@@ -38,7 +38,7 @@ const Home: React.FC<Props> = ({ companies }) => {
                 </h2>
                 <Search handleSearch={handleSearch} />
             </div>
-            <div>
+            <div className='flex flex-row'>
                 <Filter />
                 <div className="w-fit mx-auto md:float-right md:grid grid-cols-2 gap-5">
                     {results &&
