@@ -56,8 +56,8 @@ model VerificationToken {
 model Company {
   id          String  @id @default(cuid())
   name        String  @unique
-  about       String?
   description String?
+  about       String?
   email       String? @unique
   url         String  @unique
   logoUrl     String? @unique
