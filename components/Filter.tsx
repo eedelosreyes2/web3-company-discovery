@@ -7,12 +7,12 @@ const filters = [
         name: 'Blockchain',
         options: [
             { value: 'eth', label: 'ETH', checked: false },
-            { value: 'sol', label: 'Beige', checked: false },
-            { value: 'avax', label: 'Blue', checked: false },
-            { value: 'terra', label: 'Brown', checked: false },
-            { value: 'btc', label: 'Green', checked: false },
-            { value: 'matic', label: 'Purple', checked: false },
-            { value: 'near', label: 'Purple', checked: false },
+            { value: 'sol', label: 'SOL', checked: false },
+            { value: 'avax', label: 'AVAX', checked: false },
+            { value: 'terra', label: 'TERRA', checked: false },
+            { value: 'btc', label: 'BTC', checked: false },
+            { value: 'matic', label: 'MATIC', checked: false },
+            { value: 'near', label: 'NEAR', checked: false },
         ],
     },
     {
