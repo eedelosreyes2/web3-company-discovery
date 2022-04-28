@@ -1,15 +1,6 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
-import { FilterIcon, MinusSmIcon, PlusSmIcon, ViewGridIcon } from '@heroicons/react/solid'
+import { Disclosure, Menu } from '@headlessui/react'
+import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
 
-const subCategories = [
-    { name: 'Totes', href: '#' },
-    { name: 'Backpacks', href: '#' },
-    { name: 'Travel Bags', href: '#' },
-    { name: 'Hip Bags', href: '#' },
-    { name: 'Laptop Sleeves', href: '#' },
-]
 const filters = [
     {
         id: 'color',
@@ -50,12 +41,12 @@ const filters = [
 
 export default () => (
     <main>
-        <div className="relative z-10 flex items-baseline justify-between pt-20">
+        <div className="relative z-10 flex items-baseline justify-between">
 
             <div className="flex items-center">
                 <Menu as="div" className="relative inline-block text-left">
                     <div>
-                        <p className="group inline-flex justify-center text-md font-medium text-slate-400">
+                        <p className="group inline-flex justify-center text-md font-medium text-slate-50">
                             Filter
                         </p>
                     </div>
