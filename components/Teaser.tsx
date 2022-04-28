@@ -31,7 +31,7 @@ const Teaser: React.FC<{ company: TeaserProps }> = ({ company }) => {
 
   return (
     <div
-      className="transform transition duration-200 hover:scale-105 relative cursor-pointer bg-slate-800 border border-slate-700 rounded-lg h-48 w-96 max-w-sm px-5 pt-4 mb-5 md:mb-0"
+      className="transform transition duration-200 hover:scale-105 relative cursor-pointer bg-slate-800 border border-slate-700 rounded-lg h-48 max-w-sm px-5 pt-4 mb-5 md:mb-0"
       onClick={() => Router.push('/companies/[id]', `/companies/${id}`)}
     >
       <div className="flex items-center">

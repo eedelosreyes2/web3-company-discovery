@@ -28,14 +28,16 @@ type Props = {
 
 const Search: React.FC<Props> = ({ handleSearch }) => {
   return (
-    <div className="flex h-14 min-w-full md:min-w-[27%] border-b border-slate-600">
-      <Icon />
-      <input
-        type="text"
-        className="focus:placeholder:text-slate-400  placeholder:text-white bg-transparent outline-none w-full"
-        placeholder="Search companies"
-        onChange={handleSearch}
-      />
+    <div className="min-w-full sm:min-w-0">
+      <div className="mx-auto h-14 max-w-sm sm:mx-0 flex sm:min-w-fit sm:w-96 border-b border-slate-600">
+        <Icon />
+        <input
+          type="text"
+          className="focus:placeholder:text-slate-400 placeholder:text-white bg-transparent outline-none w-full"
+          placeholder="Search companies"
+          onChange={handleSearch}
+        />
+      </div>
     </div>
   );
 };
