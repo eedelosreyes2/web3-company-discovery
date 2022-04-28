@@ -36,10 +36,10 @@ const Home: React.FC<Props> = ({ companies }) => {
         <h2 className="md:max-w-[50%] lg:max-w-[40%] font-black pb-3">
           Discover and learn about web3 companies
         </h2>
-        <Filter />
         <Search handleSearch={handleSearch} />
       </div>
       <div className="w-fit mx-auto md:float-right md:grid grid-cols-2 gap-5">
+        <Filter />
         {results &&
           results.map((company) => (
             <Teaser key={company.id} company={company} />
