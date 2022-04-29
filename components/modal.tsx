@@ -23,60 +23,67 @@ const Modal = ({ handleClose, company }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={handleClose}
         >
-            <a
-                onClick={handleClose}
-                className="absolute flex items-center p-2 top-8 right-8 bg-slate-700 rounded-full hover:cursor-pointer"
-            >
-                <svg
-                    className="w-6 h-6"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M17.25 6.75L6.75 17.25"
-                        stroke="#F8FAFC"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        d="M6.75 6.75L17.25 17.25"
-                        stroke="#F8FAFC"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
-                </svg>
-            </a>
-            <div className="flex justify-center mt-24 mb-9 ">
+            <div className="flex flex-col space-y-6 items-center mt-20 mb-9">
+                <motion.div className="flex justify-end w-full max-w-screen-sm">
+                    <a
+                        onClick={handleClose}
+                        className="flex items-center p-2 top-8 right-8 bg-slate-700 rounded-full hover:cursor-pointer"
+                    >
+                        <svg
+                            className="w-6 h-6"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M17.25 6.75L6.75 17.25"
+                                stroke="#F8FAFC"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M6.75 6.75L17.25 17.25"
+                                stroke="#F8FAFC"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </a>
+                </motion.div>
                 <motion.div
                     onClick={(e) => e.stopPropagation()}
-                    className="flex justify-center max-w-screen-sm p-8 rounded-xl bg-slate-800 border border-slate-700"
+                    className="flex justify-center w-full max-w-screen-sm p-8 rounded-xl bg-slate-800 border border-slate-700"
                     initial={{ opacity: 0, scale: 0.75 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0 }}
                 >
                     {/* content */}
-                    <div>
-                        <div className="header flex items-center space-x-4">
+                    <div className="w-full">
+                        <div className="header flex items-center space-x-6">
                             {/* <Image
                                 loader={contentfulLoader}
                                 src={logoUrl}
                                 width={48}
                                 height={48}
                             /> */}
-                            <div className="w-24 h-24 rounded bg-slate-400"></div>
-                            <div>
+                            <div className="w-[120px] h-[120px] flex-none rounded bg-slate-400"></div>
+                            <div className="flex-auto">
                                 <h3 className="text-2xl mb-1">{name}</h3>
-                                <p className="mb-3">
-                                    The essential web3 toolkit for sharing and
-                                    funding anything.{" "}
-                                </p>
+                                <p className="mb-3">{description}</p>
                                 <ul className="flex space-x-2">
-                                    <li className="badge">App</li>
-                                    <li className="badge">Sol</li>
+                                    {tags &&
+                                        tags.map((tag) => (
+                                            <li
+                                                key={tag["id"]}
+                                                className="badge"
+                                            >
+                                                {tag["name"]}
+                                            </li>
+                                        ))}
                                 </ul>
                             </div>
                         </div>
@@ -169,7 +176,7 @@ const Modal = ({ handleClose, company }) => {
                         <hr className="my-6 border-t border-slate-700" />
                         <div className="flex flex-col space-y-3">
                             <h4>About</h4>
-                            <p>{description}</p>
+                            <p>{about}</p>
                         </div>
                     </div>
                 </motion.div>
