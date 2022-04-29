@@ -29,7 +29,7 @@ const contentfulLoader = ({ src, quality, width }) => {
 };
 
 const Teaser: React.FC<{ company: TeaserProps }> = ({ company }) => {
-    const { id, name, about, logoUrl, blockchains, tags } = company;
+    const { id, name, description, about, logoUrl, blockchains, tags } = company;
 
     const [modalOpen, setModalOpen] = useState(false);
     const close = () => setModalOpen(false);
@@ -55,7 +55,7 @@ const Teaser: React.FC<{ company: TeaserProps }> = ({ company }) => {
                     )}
                     <h4>{name}</h4>
                 </div>
-                <div className="line-clamp-2 text-slate-400 my-2">{about}</div>
+                <div className="line-clamp-2 text-slate-400 my-2">{description}</div>
                 <div className="flex absolute bottom-4 pt-3">
                     {tags &&
                         tags.map((tag) => (
