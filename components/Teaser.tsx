@@ -5,17 +5,17 @@ import Modal from "../components/modal";
 import { AnimatePresence, motion } from "framer-motion";
 
 export type TeaserProps = {
-    id: string;
-    name: string;
-    about: string;
-    description: string;
-    email: string;
-    url: string;
-    logoUrl: string;
-    links: Object[];
-    blockchains: Object[];
-    tags: Object[];
-    published: boolean;
+  id: string;
+  name: string;
+  description: string;
+  about: string;
+  email: string;
+  url: string;
+  logoUrl: string;
+  links: Object[];
+  blockchains: Object[];
+  tags: Object[];
+  published: boolean;
 };
 
 const contentfulLoader = ({ src, quality, width }) => {

@@ -180,9 +180,10 @@ const Modal = ({ handleClose, company }) => {
                         </div>
                     </div>
                 </motion.div>
-            </div>
-        </motion.div>
-    );
+
+      </div>
+    </motion.div>
+  );
 };
 
 export default Modal;
