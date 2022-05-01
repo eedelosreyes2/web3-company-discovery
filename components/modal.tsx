@@ -12,7 +12,19 @@ const contentfulLoader = ({ src, quality, width }) => {
 };
 
 const Modal = ({ handleClose, company }) => {
-  const { id, description, name, about, logoUrl, blockchains, tags } = company;
+  const {
+    id,
+    name,
+    description,
+    about,
+    email,
+    url,
+    logoUrl,
+    links,
+    blockchains,
+    tags,
+    published,
+  } = company;
 
   console.log(company);
 
