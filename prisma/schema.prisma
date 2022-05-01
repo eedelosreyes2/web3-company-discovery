@@ -66,18 +66,11 @@ model Company {
 }
 
 model Link {
-  id        String    @id @default(cuid())
-  url       String    @unique
+  id        String   @id @default(cuid())
+  url       String   @unique
   companyId String?
-  companies Company?  @relation(fields: [companyId], references: [id])
-  type      LinkType?
-}
-
-model LinkType {
-  id     String  @id @default(cuid())
-  name   String  @unique
-  linkId String? @unique
-  links  Link?   @relation(fields: [linkId], references: [id])
+  type      String   @default("")
+  companies Company? @relation(fields: [companyId], references: [id])
 }
 
 model Blockchain {
