@@ -43,9 +43,11 @@ type CompanyProps = {
 };
 
 const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
+    const [filteredResults, setFilteredResults] = useState([]);
     const [results, setResults] = useState(companies);
     const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState([]);
+
 
     const generateCategories = (companies) => {
         const compObj = {
@@ -82,7 +84,8 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
 
     const handleSearch = (e) => {
         const query = e.target.value;
-        const searchedCompanies = Object.values(companies).filter((val) =>
+        const searchPool = filters.length ? filteredResults : companies;
+        const searchedCompanies = Object.values(searchPool).filter((val) =>
             val.name.toLowerCase().startsWith(query.toLowerCase())
         );
         setResults(searchedCompanies);
@@ -110,6 +113,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
                 filteredResults.push(companies[i])
             }
         }
+        setFilteredResults(filteredResults)
         setResults(filteredResults)
     };
 
