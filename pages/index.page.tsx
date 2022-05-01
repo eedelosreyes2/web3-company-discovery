@@ -107,7 +107,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         const filteredResults = []
         for (let i = 0; i < companies.length; i++) {
             const companyFilters = [...companies[i].tags.map(t => t.name), ...companies[i].blockchains.map(b => b.name)]
-            if (companyFilters.some(f => newFilters.includes(f))) {
+            if (newFilters.every(f => companyFilters.includes(f))) {
                 filteredResults.push(companies[i])
             }
         }
