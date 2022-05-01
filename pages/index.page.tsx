@@ -15,6 +15,19 @@ export const getStaticProps: GetStaticProps = async () => {
     return { props: { companies } };
 };
 
+type Tag = {
+    id: string;
+    name: string;
+    companyId: string;
+}
+
+type Blockchain = {
+    id: string;
+    name: string;
+    companyId: string;
+    acronym: string;
+}
+
 type CompanyProps = {
     id: string;
     name: string;
@@ -24,8 +37,8 @@ type CompanyProps = {
     url: string;
     logoUrl: string;
     links: Object[];
-    blockchains: Object[];
-    tags: Object[];
+    blockchains: Blockchain[];
+    tags: Tag[];
     published: boolean;
 };
 
@@ -76,7 +89,6 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     };
 
     const handleFilter = (e) => {
-        console.log(companies)
         const filter = e.target.value;
         let newFilters = filters
         if (newFilters.includes(filter)) {
@@ -84,15 +96,21 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         } else {
             newFilters.push(filter)
         }
-        setFilters(newFilters)
+
+        if (newFilters.length) {
+            setFilters(newFilters)
+        } else {
+            setResults(companies)
+            return
+        }
+
         const filteredResults = []
         for (let i = 0; i < companies.length; i++) {
-            const companyFilters = [...companies[i].tags, ...companies[i].blockchains]
+            const companyFilters = [...companies[i].tags.map(t => t.name), ...companies[i].blockchains.map(b => b.name)]
             if (companyFilters.some(f => newFilters.includes(f))) {
                 filteredResults.push(companies[i])
             }
         }
-        console.log(filteredResults)
         setResults(filteredResults)
     };
 
