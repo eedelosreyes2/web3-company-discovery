@@ -1,60 +1,97 @@
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
-const Modal = ({ handleClose }) => {
+const contentfulLoader = ({ src, quality, width }) => {
+  const params = [`w=${width}`];
+
+  if (quality) {
+    params.push(`q=${quality}`);
+  }
+
+  return `${src}?${params.join('&')}`;
+};
+
+const Modal = ({ handleClose, company }) => {
+  const {
+    id,
+    name,
+    description,
+    about,
+    email,
+    url,
+    logoUrl,
+    links,
+    blockchains,
+    tags,
+    published,
+  } = company;
+
+  console.log(company);
+
   return (
     <motion.div
-      // onClick={handleClose}
       className="backdrop"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      onClick={handleClose}
     >
-      <a
-        onClick={handleClose}
-        className="absolute flex items-center p-2 top-8 right-8 bg-slate-700 rounded-full hover:cursor-pointer"
-      >
-        <svg
-          className="w-6 h-6"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M17.25 6.75L6.75 17.25"
-            stroke="#F8FAFC"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M6.75 6.75L17.25 17.25"
-            stroke="#F8FAFC"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </a>
-      <div className="flex justify-center mt-24 mb-9 ">
+      <div className="flex flex-col space-y-6 items-center mt-20 mb-9">
+        <motion.div className="flex justify-end w-full max-w-screen-sm">
+          <a
+            onClick={handleClose}
+            className="flex items-center p-2 top-8 right-8 bg-slate-700 rounded-full hover:cursor-pointer"
+          >
+            <svg
+              className="w-6 h-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17.25 6.75L6.75 17.25"
+                stroke="#F8FAFC"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M6.75 6.75L17.25 17.25"
+                stroke="#F8FAFC"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </a>
+        </motion.div>
         <motion.div
           onClick={(e) => e.stopPropagation()}
-          className="flex justify-center max-w-screen-sm p-8 rounded-xl bg-slate-800 border border-slate-700"
+          className="flex justify-center w-full max-w-screen-sm p-8 rounded-xl bg-slate-800 border border-slate-700"
           initial={{ opacity: 0, scale: 0.75 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0 }}
         >
           {/* content */}
-          <div>
-            <div className="header flex items-center space-x-4">
-              <div className="w-24 h-24 rounded bg-slate-400"></div>
-              <div>
-                <h3 className="text-2xl mb-1">Mirror</h3>
-                <p className="mb-3">
-                  The essential web3 toolkit for sharing and funding anything.{' '}
-                </p>
+          <div className="w-full">
+            <div className="header flex items-center space-x-6">
+              {/* <Image
+                                loader={contentfulLoader}
+                                src={logoUrl}
+                                width={48}
+                                height={48}
+                            /> */}
+              <div className="w-[120px] h-[120px] flex-none rounded bg-slate-400"></div>
+              <div className="flex-auto">
+                <h3 className="text-2xl mb-1">{name}</h3>
+                <p className="mb-3">{description}</p>
                 <ul className="flex space-x-2">
-                  <li className="badge">App</li>
-                  <li className="badge">Sol</li>
+                  {tags &&
+                    tags.map((tag) => (
+                      <li key={tag['id']} className="badge">
+                        {tag['name']}
+                      </li>
+                    ))}
                 </ul>
               </div>
             </div>
@@ -76,23 +113,23 @@ const Modal = ({ handleClose }) => {
                       <path
                         d="M16.75 13.25L18 12C19.6569 10.3431 19.6569 7.65685 18 6C16.3431 4.34315 13.6569 4.34315 12 6L10.75 7.25"
                         stroke="#94A3B8"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M7.24999 10.75L5.99999 12C4.34314 13.6569 4.34314 16.3431 5.99999 18C7.65684 19.6569 10.3431 19.6569 12 18L13.25 16.75"
                         stroke="#94A3B8"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M14.25 9.75L9.75 14.25"
                         stroke="#94A3B8"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   </div>
@@ -147,20 +184,7 @@ const Modal = ({ handleClose }) => {
             <hr className="my-6 border-t border-slate-700" />
             <div className="flex flex-col space-y-3">
               <h4>About</h4>
-              <p>
-                Mirror a publishing platform for writers that leverages
-                cryptocurrency and blockchain technology. Through a
-                decentralized, user-owned, crypto-based network, Mirror is
-                revolutionizing the way we express, share, and monetize our
-                thoughts. space.
-              </p>
-              <p>
-                This unique publishing platform was created by Denis Nazarov in
-                2020. It has been regarded as the Medium of Web3, simply because
-                of its functionality. However, this decentralized writing
-                platform developed to help creators connect with their target
-                audience is an innovative initiative in the Web3
-              </p>
+              <p>{about}</p>
             </div>
           </div>
         </motion.div>

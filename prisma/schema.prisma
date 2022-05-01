@@ -68,16 +68,25 @@ model Company {
 }
 
 model Link {
-  id        String   @id @default(cuid())
-  url       String   @unique
-  type      String? // Twitter, Instagram, etc. 
-  companies Company? @relation(fields: [companyId], references: [id])
+  id        String    @id @default(cuid())
+  url       String    @unique
+  type      LinkType?
+  companies Company?  @relation(fields: [companyId], references: [id])
   companyId String?
+}
+
+// Twitter, Discord, etc. 
+model LinkType {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  links     Link?    @relation(fields: [linkId], references: [id])
+  linkId String?
 }
 
 model Blockchain {
   id        String   @id @default(cuid())
   name      String   @unique
+  acronym   String   @unique
   companies Company? @relation(fields: [companyId], references: [id])
   companyId String?
 }
