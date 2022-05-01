@@ -34,10 +34,36 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState([]);
 
+    const generateCategories = (companies) => {
+        const compObj = {
+            blockchains: [],
+            tags: [],
+        }
+        for (let i = 0; i < companies.length; i++) {
+            compObj.blockchains = [...compObj.blockchains, ...companies[i].blockchains.map(b => b.name)]
+            compObj.tags = [...compObj.tags, ...companies[i].tags.map(tag => tag.name)]
+        }
+        const newCategories = []
+        newCategories.push({
+            id: 'blockchain',
+            name: 'Blockchain',
+            options: compObj.blockchains.map(b => {
+                return { value: b, label: b, checked: false }
+            })
+        })
+        newCategories.push({
+            id: 'tags',
+            name: 'Tags',
+            options: compObj.tags.map(b => {
+                return { value: b, label: b, checked: false }
+            })
+        })
+        setCategories(newCategories)
+    }
+
     useEffect(() => {
-
         if (companies) {
-
+            generateCategories(companies)
         }
     }, [companies])
 
@@ -66,6 +92,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
                 filteredResults.push(companies[i])
             }
         }
+        console.log(filteredResults)
         setResults(filteredResults)
     };
 

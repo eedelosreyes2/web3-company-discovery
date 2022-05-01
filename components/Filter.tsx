@@ -1,49 +1,21 @@
 import { Disclosure, Menu } from '@headlessui/react'
 import { MinusSmIcon, PlusSmIcon } from '@heroicons/react/solid'
 
-const filters = [
-    {
-        id: 'blockchain',
-        name: 'Blockchain',
-        options: [
-            { value: 'eth', label: 'ETH', checked: false },
-            { value: 'sol', label: 'SOL', checked: false },
-            { value: 'avax', label: 'AVAX', checked: false },
-            { value: 'terra', label: 'TERRA', checked: false },
-            { value: 'btc', label: 'BTC', checked: false },
-            { value: 'matic', label: 'MATIC', checked: false },
-            { value: 'near', label: 'NEAR', checked: false },
-        ],
-    },
-    {
-        id: 'tags',
-        name: 'Tags',
-        options: [
-            { value: 'nft', label: 'NFT', checked: false },
-            { value: 'dex', label: 'DEX', checked: false },
-            { value: 'analytics', label: 'Analytics', checked: false },
-            { value: 'marketplace', label: 'Marketplace', checked: false },
-            { value: 'education', label: 'Education', checked: false },
-            { value: 'news', label: 'News', checked: false },
-            { value: 'dao', label: 'DAO', checked: false },
-            { value: 'protocol', label: 'Protocol', checked: false },
-            { value: 'defi', label: 'DeFi', checked: false },
-            { value: 'swap', label: 'Swap', checked: false },
-            { value: 'wallet', label: 'Wallet', checked: false },
-            { value: 'blockchain', label: 'Blockchain', checked: false },
-            { value: 'community', label: 'Community', checked: false },
-            { value: 'layer_2', label: 'Layer 2', checked: false },
-        ],
-    },
-]
+type FilterOption = {
+    value: string,
+    label: string,
+    checked: boolean,
+}
 
-type Category = {
-
+type FilterCategory = {
+    id: string,
+    name: string,
+    options: FilterOption[],
 }
 
 type Props = {
     handleFilter: React.MouseEventHandler<HTMLInputElement>,
-    categories: Category,
+    categories: FilterCategory[],
 };
 
 const Filter: React.FC<Props> = ({ handleFilter, categories }) => {
@@ -66,7 +38,7 @@ const Filter: React.FC<Props> = ({ handleFilter, categories }) => {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
                 <form className="lg:block">
 
-                    {filters.map((section) => (
+                    {categories.map((section) => (
                         <Disclosure as="div" key={section.id} className="py-6">
                             {({ open }) => (
                                 <>
