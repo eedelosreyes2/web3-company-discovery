@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next';
 import prisma from '../lib/prisma';
 import Layout from '../components/Layout';
 import Search from '../components/Search';
-import Teaser, { TeaserProps } from '../components/Teaser';
+import Teaser from '../components/Teaser';
 
 export const getStaticProps: GetStaticProps = async () => {
   const companies = await prisma.company.findMany({
@@ -13,11 +13,21 @@ export const getStaticProps: GetStaticProps = async () => {
   return { props: { companies } };
 };
 
-type Props = {
-  companies: TeaserProps[];
+type CompanyProps = {
+  id: string;
+  name: string;
+  description: string;
+  about: string;
+  email: string;
+  url: string;
+  logoUrl: string;
+  links: Object[];
+  blockchains: Object[];
+  tags: Object[];
+  published: boolean;
 };
 
-const Home: React.FC<Props> = ({ companies }) => {
+const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
   const [results, setResults] = useState(companies);
 
   const handleSearch = (e) => {
