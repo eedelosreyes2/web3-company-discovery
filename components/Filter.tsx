@@ -37,8 +37,17 @@ const filters = [
     },
 ]
 
-export default () => (
-    <main>
+type Category = {
+
+}
+
+type Props = {
+    handleFilter: React.MouseEventHandler<HTMLInputElement>,
+    categories: Category,
+};
+
+const Filter: React.FC<Props> = ({ handleFilter, categories }) => {
+    return (<main>
         <div className="relative z-10 flex items-baseline justify-between">
 
             <div className="flex items-center">
@@ -55,7 +64,6 @@ export default () => (
         <section aria-labelledby="products-heading" className="pt-6 pb-24">
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
-                {/* Filters */}
                 <form className="lg:block">
 
                     {filters.map((section) => (
@@ -84,8 +92,8 @@ export default () => (
                                                         defaultValue={option.value}
                                                         type="checkbox"
                                                         defaultChecked={option.checked}
-                                                        className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
-                                                    />
+                                                        onClick={handleFilter}
+                                                        className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
                                                     <label
                                                         htmlFor={`filter-${section.id}-${optionIdx}`}
                                                         className="ml-3 text-sm text-slate-400"
@@ -103,5 +111,7 @@ export default () => (
                 </form>
             </div>
         </section>
-    </main>
-)
+    </main>);
+}
+
+export default Filter;
