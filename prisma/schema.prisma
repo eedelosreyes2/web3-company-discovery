@@ -70,7 +70,7 @@ model Company {
 model Link {
   id        String   @id @default(cuid())
   url       String   @unique
-  type      String? // Twitter, Instagram, etc. 
+  type      String?  // Twitter, Instagram, etc. 
   companies Company? @relation(fields: [companyId], references: [id])
   companyId String?
 }
