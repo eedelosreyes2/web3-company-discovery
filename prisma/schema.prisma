@@ -1,25 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DB_URL")
 }
 
-generator client {
-  provider = "prisma-client-js"
-}
-
-// NextAuth Schemas
 model Account {
   id                String  @id @default(cuid())
   userId            String
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -52,48 +51,39 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-// Company Schemas
 model Company {
-  id          String  @id @default(cuid())
-  name        String  @unique
+  id          String       @id @default(cuid())
+  name        String       @unique
   description String?
+  email       String?      @unique
+  url         String       @unique
+  logoUrl     String?      @unique
+  published   Boolean      @default(false)
   about       String?
-  email       String? @unique
-  url         String  @unique
-  logoUrl     String? @unique
-  links       Link[]
   blockchains Blockchain[]
+  links       Link[]
   tags        Tag[]
-  published   Boolean @default(false)
 }
 
 model Link {
-  id        String    @id @default(cuid())
-  url       String    @unique
-  type      LinkType?
-  companies Company?  @relation(fields: [companyId], references: [id])
-  companyId String?
-}
-
-// Twitter, Discord, etc. 
-model LinkType {
   id        String   @id @default(cuid())
-  name      String   @unique
-  links     Link?    @relation(fields: [linkId], references: [id])
-  linkId String?
+  url       String   @unique
+  companyId String?
+  type      String   @default("")
+  companies Company? @relation(fields: [companyId], references: [id])
 }
 
 model Blockchain {
   id        String   @id @default(cuid())
   name      String   @unique
+  companyId String?
   acronym   String   @unique
   companies Company? @relation(fields: [companyId], references: [id])
-  companyId String?
 }
 
 model Tag {
   id        String   @id @default(cuid())
   name      String   @unique
-  companies Company? @relation(fields: [companyId], references: [id])
   companyId String?
+  companies Company? @relation(fields: [companyId], references: [id])
 }
