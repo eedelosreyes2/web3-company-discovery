@@ -97,9 +97,8 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
             newFilters.push(filter)
         }
 
-        if (newFilters.length) {
-            setFilters(newFilters)
-        } else {
+        setFilters(newFilters)
+        if (!newFilters.length) {
             setResults(companies)
             return
         }
