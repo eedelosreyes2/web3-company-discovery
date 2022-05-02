@@ -47,6 +47,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     const [results, setResults] = useState(companies);
     const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState([]);
+    const [searchVal, setSearchVal] = useState('')
 
 
     const generateCategories = (companies) => {
@@ -84,6 +85,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
 
     const handleSearch = (e) => {
         const query = e.target.value;
+        setSearchVal(query);
         const searchPool = filters.length ? filteredResults : companies;
         const searchedCompanies = Object.values(searchPool).filter((val) =>
             val.name.toLowerCase().startsWith(query.toLowerCase())
@@ -92,6 +94,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     };
 
     const handleFilter = (e) => {
+        setSearchVal('');
         const filter = e.target.value;
         let newFilters = filters
         if (newFilters.includes(filter)) {
@@ -121,10 +124,10 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         <Layout>
             <div className="flex flex-col md:flex-row items-center justify-between mb-8">
                 <h2 className="headline">Discover and learn about web3 companies</h2>
-                <Search handleSearch={handleSearch} />
+                <Search handleSearch={handleSearch} searchVal={searchVal} />
             </div>
             <div className='flex flex-row'>
-                <Filter handleFilter={handleFilter} categories={categories}  />
+                <Filter handleFilter={handleFilter} categories={categories} />
                 <div className="w-fit mx-auto md:float-right md:grid grid-cols-2 gap-5">
                     {results &&
                         results.map((company) => (
