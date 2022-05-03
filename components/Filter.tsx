@@ -20,7 +20,7 @@ type Props = {
 
 const Filter: React.FC<Props> = ({ handleFilter, categories }) => {
   return (
-    <div className="md:w-64">
+    <div className="max-w-sm mx-auto w-full md:mx-0 md:w-64 pb-3">
       {/* <p className="text-slate-50 pb-6">Filters</p> */}
       <form>
         {categories.map((section) => (

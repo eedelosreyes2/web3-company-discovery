@@ -130,13 +130,15 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
 
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-        <h2 className="headline">Discover and learn about web3 companies</h2>
+      <div className="flex flex-col md:flex-row items-end justify-between mb-8">
+        <h2 className="headline max-w-sm mx-auto md:max-w-[486px] md:mx-0 lg:w-full">
+          Discover and learn about web3 companies
+        </h2>
         <Search handleSearch={handleSearch} searchVal={searchVal} />
       </div>
       <div className="flex flex-col md:flex-row justify-between">
         <Filter handleFilter={handleFilter} categories={categories} />
-        <div className="w-fit mx-auto md:mx-0 md:float-right md:grid h-max grid-cols-2 gap-5">
+        <div className="w-fit h-max mx-auto lg:grid-cols-2 grid-cols-1 md:mx-0 md:float-right md:grid">
           {results &&
             results.map((company) => (
               <Teaser key={company.id} company={company} />
