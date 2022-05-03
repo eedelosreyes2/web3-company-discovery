@@ -10,7 +10,7 @@ const Header: React.FC = () => {
     router.pathname === pathname;
 
   return (
-    <nav className="flex justify-between itemsCenter py-10">
+    <nav className="flex justify-between itemsCenter py-10 max-w-sm mx-auto md:max-w-full md:mx-0">
       <Link href="/">
         <a className="bold" data-active={isActive('/')}>
           <svg
