@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
-
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import prisma from '../lib/prisma';
 import Layout from '../components/Layout';
 import Search from '../components/Search';
@@ -48,6 +48,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
   const [categories, setCategories] = useState([]);
   const [filters, setFilters] = useState([]);
   const [searchVal, setSearchVal] = useState('');
+  const [menu, setMenu] = useState(false);
 
   const generateCategories = (companies) => {
     const compObj = {
@@ -130,14 +131,32 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
 
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row items-end justify-between mb-8">
-        <h2 className="headline max-w-sm mx-auto md:max-w-[486px] md:mx-0 lg:w-full">
+      <div className="flex flex-col md:flex-row items-end justify-between mb-6 md:mb-12">
+        <h2 className="headline col-responsive md:max-w-[486px]">
           Discover and learn about web3 companies
         </h2>
-        <Search handleSearch={handleSearch} searchVal={searchVal} />
+        <div
+          onClick={() => setMenu(!menu)}
+          className="col-responsive w-full flex justify-center py-4 mt-6 cursor-pointer text-slate-400 md:hidden"
+        >
+          {menu ? (
+            <ChevronUpIcon className="h-5 w-5" />
+          ) : (
+            <ChevronDownIcon className="h-5 w-5" />
+          )}
+        </div>
+        <Search
+          display={menu}
+          handleSearch={handleSearch}
+          searchVal={searchVal}
+        />
       </div>
       <div className="flex flex-col md:flex-row justify-between">
-        <Filter handleFilter={handleFilter} categories={categories} />
+        <Filter
+          display={menu}
+          handleFilter={handleFilter}
+          categories={categories}
+        />
         <div className="w-fit h-max mx-auto lg:grid-cols-2 grid-cols-1 md:mx-0 md:float-right md:grid">
           {results &&
             results.map((company) => (
