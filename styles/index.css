@@ -41,6 +41,10 @@
   .modal_logo {
     @apply rounded;
   }
+
+  .col-responsive {
+    @apply max-w-sm mx-auto md:mx-0;
+  }
 }
 
 .backdrop {

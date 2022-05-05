@@ -14,13 +14,19 @@ type FilterCategory = {
 };
 
 type Props = {
+  display: boolean;
   handleFilter: React.MouseEventHandler<HTMLInputElement>;
   categories: FilterCategory[];
 };
 
-const Filter: React.FC<Props> = ({ handleFilter, categories }) => {
+const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
   return (
-    <div className="max-w-sm mx-auto w-full md:mx-0 md:w-64 pb-3">
+    <div
+      className={
+        'max-w-sm mx-auto w-full md:mx-0 md:w-64 pb-6' +
+        (display ? '' : ' hidden md:block')
+      }
+    >
       {/* <p className="text-slate-50 pb-6">Filters</p> */}
       <form>
         {categories.map((section) => (
@@ -48,11 +54,11 @@ const Filter: React.FC<Props> = ({ handleFilter, categories }) => {
                           type="checkbox"
                           defaultChecked={option.checked}
                           onClick={handleFilter}
-                          className="h-4 w-4 rounded"
+                          className="cursor-pointer h-4 w-4 rounded"
                         />
                         <label
                           htmlFor={`filter-${section.id}-${optionIdx}`}
-                          className="pl-3 text-sm text-slate-400"
+                          className="cursor-pointer pl-3 text-sm text-slate-400"
                         >
                           {option.label}
                         </label>

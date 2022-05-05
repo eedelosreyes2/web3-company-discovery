@@ -23,13 +23,18 @@ const Icon = () => {
 };
 
 type Props = {
+  display: boolean;
   handleSearch: React.ChangeEventHandler<HTMLInputElement>;
   searchVal: string;
 };
 
-const Search: React.FC<Props> = ({ handleSearch, searchVal }) => {
+const Search: React.FC<Props> = ({ display, handleSearch, searchVal }) => {
   return (
-    <div className="max-w-sm mx-auto w-full md:mx-0 md:ml-5">
+    <div
+      className={
+        'col-responsive w-full md:ml-5' + (display ? '' : ' hidden md:block')
+      }
+    >
       <div className="mx-auto h-14 max-w-sm sm:mx-0 flex sm:min-w-fit sm:w-96 border-b border-slate-600">
         <Icon />
         <input
