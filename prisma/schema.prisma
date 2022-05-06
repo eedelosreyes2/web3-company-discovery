@@ -60,8 +60,8 @@ model Company {
   logoUrl     String?      @unique
   published   Boolean      @default(false)
   about       String?
-  blockchains Blockchain[]
   links       Link[]
+  blockchains Blockchain[]
   tags        Tag[]
 }
 
@@ -74,14 +74,14 @@ model Link {
 }
 
 model Blockchain {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  acronym   String   @unique
+  id        String    @id @default(cuid())
+  name      String    @unique
+  acronym   String    @unique
   companies Company[]
 }
 
 model Tag {
-  id        String   @id @default(cuid())
-  name      String   @unique
+  id        String    @id @default(cuid())
+  name      String    @unique
   companies Company[]
 }
