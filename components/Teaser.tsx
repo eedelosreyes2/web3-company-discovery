@@ -38,7 +38,7 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
   return (
     <>
       <div
-        className="bg-slate-800 border border-slate-700 rounded-lg 
+        className="shrink bg-slate-800 border border-slate-700 rounded-lg 
             relative flex flex-col justify-between cursor-pointer 
             transform transition duration-200 hover:scale-105 
             h-[200px] max-w-sm p-6 mb-5 md:ml-5"
@@ -60,7 +60,7 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
           <h4>{name}</h4>
         </div>
         <p className="line-clamp-2">{description}</p>
-        <ul className="flex space-x-2">
+        <ul className="line-clamp-1 space-x-2">
           {blockchains &&
             blockchains.map((blockchain) => (
               <li key={blockchain['id']} className="badge">
