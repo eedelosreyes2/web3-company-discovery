@@ -90,6 +90,22 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         setCategories(newCategories);
     };
 
+    const updateCategories = (newFilters: string[]) => {
+        const newCategories = []
+        while (categories.length) {
+            const category = categories.pop()
+            const newOptions = category.options.map(({ value, label }) => {
+                if (newFilters.includes(label)) {
+                    return { value, label, checked: true };
+                }
+                return { value, label, checked: false };
+            })
+            category.options = newOptions
+            newCategories.push(category)
+        }
+        setCategories(newCategories.reverse())
+    }
+
     useEffect(() => {
         if (companies) {
             generateCategories(companies);
@@ -116,6 +132,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
             newFilters.push(filter);
         }
 
+        updateCategories(newFilters)
         setFilters(newFilters);
         if (!newFilters.length) {
             setResults(companies);
