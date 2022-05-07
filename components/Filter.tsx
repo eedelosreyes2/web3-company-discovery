@@ -27,7 +27,6 @@ const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
         (display ? '' : ' hidden md:block')
       }
     >
-      {/* <p className="text-slate-50 pb-6">Filters</p> */}
       <form>
         {categories.map((section) => (
           <Disclosure as="div" key={section.id} className="pb-6">
