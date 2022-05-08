@@ -47,10 +47,16 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     const [results, setResults] = useState(companies);
     const [categories, setCategories] = useState([]);
     const [filters, setFilters] = useState([]);
-    const [searchVal, setSearchVal] = useState("");
+    const [searchVal, setSearchVal] = useState('');
     const [menu, setMenu] = useState(false);
 
-    const generateCategories = (companies) => {
+    const companyCategoryHelper = (section: Blockchain[] | Tag[], alreadyAdded: string[]) => {
+        return section
+            .filter((s) => !alreadyAdded.includes(s.name))
+            .map((s) => s.name)
+    }
+
+    const generateCategories = (companies: CompanyProps[]) => {
         const compObj = {
             blockchains: [],
             tags: [],
@@ -59,11 +65,11 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         for (let i = 0; i < companies.length; i++) {
             compObj.blockchains = [
                 ...compObj.blockchains,
-                ...companies[i].blockchains.map((b) => b.name),
+                ...companyCategoryHelper(companies[i].blockchains, compObj.blockchains)
             ];
             compObj.tags = [
                 ...compObj.tags,
-                ...companies[i].tags.map((tag) => tag.name),
+                ...companyCategoryHelper(companies[i].tags, compObj.tags)
             ];
         }
         const newCategories = [];
@@ -84,6 +90,19 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         setCategories(newCategories);
     };
 
+    const updateCategories = (newFilters: string[]) => {
+        const newCategories = []
+        while (categories.length) {
+            const category = categories.pop()
+            const newOptions = category.options.map(({ value, label }) => {
+                return { value, label, checked: newFilters.includes(label) };
+            })
+            category.options = newOptions
+            newCategories.push(category)
+        }
+        setCategories(newCategories.reverse())
+    }
+
     useEffect(() => {
         if (companies) {
             generateCategories(companies);
@@ -101,7 +120,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     };
 
     const handleFilter = (e) => {
-        setSearchVal("");
+        setSearchVal('');
         const filter = e.target.value;
         let newFilters = filters;
         if (newFilters.includes(filter)) {
@@ -110,6 +129,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
             newFilters.push(filter);
         }
 
+        updateCategories(newFilters)
         setFilters(newFilters);
         if (!newFilters.length) {
             setResults(companies);
