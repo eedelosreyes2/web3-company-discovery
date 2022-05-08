@@ -95,10 +95,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         while (categories.length) {
             const category = categories.pop()
             const newOptions = category.options.map(({ value, label }) => {
-                if (newFilters.includes(label)) {
-                    return { value, label, checked: true };
-                }
-                return { value, label, checked: false };
+                return { value, label, checked: newFilters.includes(label) };
             })
             category.options = newOptions
             newCategories.push(category)
