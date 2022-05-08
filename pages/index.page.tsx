@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { GetStaticProps } from 'next';
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid';
-import prisma from '../lib/prisma';
-import Layout from '../components/Layout';
-import Search from '../components/Search';
-import Teaser from '../components/Teaser';
-import Filter from '../components/Filter';
+import React, { useState, useEffect } from "react";
+import { GetStaticProps } from "next";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
+import prisma from "../lib/prisma";
+import Layout from "../components/Layout";
+import Search from "../components/Search";
+import Teaser from "../components/Teaser";
+import Filter from "../components/Filter";
 
 export const getStaticProps: GetStaticProps = async () => {
     const companies = await prisma.company.findMany({
@@ -74,15 +74,15 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         }
         const newCategories = [];
         newCategories.push({
-            id: 'blockchain',
-            name: 'Blockchain',
+            id: "blockchain",
+            name: "Blockchain",
             options: compObj.blockchains.map((b) => {
                 return { value: b, label: b, checked: false };
             }),
         });
         newCategories.push({
-            id: 'tags',
-            name: 'Tags',
+            id: "tags",
+            name: "Tags",
             options: compObj.tags.map((b) => {
                 return { value: b, label: b, checked: false };
             }),
@@ -152,9 +152,10 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
 
     return (
         <Layout>
-            <div className="flex flex-col md:flex-row items-end justify-between mb-6 md:mb-12">
-                <h2 className="headline col-responsive md:max-w-[486px]">
-                    Discover and learn about web3 companies
+            <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-12">
+                <h2 className="headline md:max-w-[486px]">
+                    Discover and learn <br />
+                    about web3 companies
                 </h2>
                 <div
                     onClick={() => setMenu(!menu)}
@@ -178,7 +179,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
                     handleFilter={handleFilter}
                     categories={categories}
                 />
-                <div className="w-fit h-max mx-auto lg:grid-cols-2 grid-cols-1 md:mx-0 md:float-right md:grid">
+                <div className="h-max mx-auto grid grid-cols-1 gap-6 md:mx-0 md:float-right md:grid md:grid-cols-2 md:gap-6">
                     {results &&
                         results.map((company) => (
                             <Teaser key={company.id} company={company} />
