@@ -1,15 +1,15 @@
-import React, { ReactNode } from 'react';
-import Header from './Header';
+import React, { ReactNode } from "react";
+import Header from "./Header";
 
 type Props = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 const Layout: React.FC<Props> = (props) => (
-  <div className="mx-auto max-w-4xl px-10 lg:max-w-full mb-8">
-    <Header />
-    <div>{props.children}</div>
-  </div>
+    <div className="mx-auto max-w-md pb-12 px-4 md:px-10 md:max-w-full md:max-w-6xl md:p-0">
+        <Header />
+        <div>{props.children}</div>
+    </div>
 );
 
 export default Layout;
