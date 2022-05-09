@@ -107,12 +107,12 @@ const Modal = ({ handleClose, company }) => {
               <div className="flex-auto">
                 <h3 className="text-xl sm:text-2xl mb-1">{name}</h3>
                 <p className="mb-3">{description}</p>
-                <ul className="flex space-x-2">
+                <ul className="flex flex-wrap">
                   {blockchains &&
                     blockchains
                       .sort((a, b) => a['name'].localeCompare(b['name']))
                       .map((blockchain) => (
-                        <li key={blockchain['id']} className="badge">
+                        <li key={blockchain['id']} className="badge mr-2 mb-2">
                           {blockchain['acronym']}
                         </li>
                       ))}
@@ -120,7 +120,7 @@ const Modal = ({ handleClose, company }) => {
                     tags
                       .sort((a, b) => a['name'].localeCompare(b['name']))
                       .map((tag) => (
-                        <li key={tag['id']} className="badge">
+                        <li key={tag['id']} className="badge mr-2 mb-2">
                           {tag['name']}
                         </li>
                       ))}

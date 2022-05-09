@@ -35,6 +35,8 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
 
+  const imgSrc = `/company_logos/${id}.png`;
+
   return (
     <>
       <div
@@ -46,17 +48,15 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
         onClick={() => (modalOpen ? close() : open())}
       >
         <div className="flex items-center space-x-3">
-          {logoUrl && (
-            <div className="relative flex-none w-12 h-12 rounded-sm">
-              <Image
-                className="card_image"
-                src={`/company_logos/${id}.png`}
-                alt={name}
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-          )}
+          <div className="relative flex-none w-12 h-12 rounded-sm">
+            <Image
+              className="card_image"
+              src={imgSrc}
+              alt={name}
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
           <h4>{name}</h4>
         </div>
         <p className="line-clamp-2">{description}</p>

@@ -19,8 +19,6 @@ type Props = {
 };
 
 const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
-  console.log(categories);
-
   return (
     <div
       className={

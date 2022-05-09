@@ -3,80 +3,80 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: "Archivo_Extended_Black";
-    src: url("/fonts/Archivo_Expanded-Black.ttf");
+  font-family: 'Archivo_Extended_Black';
+  src: url('/fonts/Archivo_Expanded-Black.ttf');
 }
 
 @layer base {
-    html {
-        font-family: Inter, system-ui, sans-serif;
-    }
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
 
-    body {
-        @apply bg-slate-900 text-white lg:max-w-6xl m-auto;
-    }
-    h2 {
-        @apply text-4xl font-semibold text-slate-100;
-    }
-    h3 {
-        @apply text-2xl font-semibold text-slate-100;
-    }
-    h4 {
-        @apply text-xl font-medium text-slate-100;
-    }
-    p {
-        @apply text-base text-slate-400 leading-6;
-    }
+  body {
+    @apply bg-slate-900 text-white lg:max-w-6xl m-auto;
+  }
+  h2 {
+    @apply text-4xl font-semibold text-slate-100;
+  }
+  h3 {
+    @apply text-2xl font-semibold text-slate-100;
+  }
+  h4 {
+    @apply text-xl font-medium text-slate-100;
+  }
+  p {
+    @apply text-base text-slate-400 leading-6;
+  }
 }
 
 @layer components {
-    .badge {
-        @apply inline-flex items-center tracking-wide text-sm px-3 py-0.5 bg-slate-700 text-slate-400 rounded-full;
-    }
+  .badge {
+    @apply inline-flex items-center tracking-wide text-sm px-3 py-0.5 bg-slate-700 text-slate-400 rounded-full;
+  }
 
-    .card_image {
-        @apply rounded-sm;
-    }
+  .card_image {
+    @apply rounded-sm;
+  }
 
-    .modal_logo {
-        @apply rounded;
-    }
+  .modal_logo {
+    @apply rounded;
+  }
 
-    .col-responsive {
-        @apply max-w-sm mx-auto md:mx-0;
-    }
+  .col-responsive {
+    @apply max-w-sm mx-auto md:mx-0;
+  }
 }
 
 .backdrop {
-    -webkit-overflow-scrolling: touch;
-    -webkit-tap-highlight-color: transparent;
-    background: #000000e1;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 30;
-    /* background: rgba(0, 0, 0, 0.7); */
-    /* z-index: 30; */
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+  background: #000000e1;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 30;
+  /* background: rgba(0, 0, 0, 0.7); */
+  /* z-index: 30; */
 }
 
 .headline {
-    font-family: "Archivo_Extended_Black";
-    font-size: 32px;
-    line-height: 110%;
-    /* max-width: 486px; */
+  font-family: 'Archivo_Extended_Black';
+  font-size: 32px;
+  line-height: 110%;
+  /* max-width: 486px; */
 }
 
 @media only screen and (max-width: 1080px) {
-    .headline {
-        font-size: 26px;
-    }
+  .headline {
+    font-size: 26px;
+  }
 }
 
 @media only screen and (max-width: 868px) {
-    .headline {
-        font-size: 22px;
-    }
+  .headline {
+    font-size: 22px;
+  }
 }
