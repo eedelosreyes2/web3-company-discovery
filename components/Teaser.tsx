@@ -42,7 +42,7 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
       <div
         className="shrink bg-slate-800 border border-slate-700 rounded-lg 
             relative flex flex-col justify-between cursor-pointer 
-            transform transition duration-200 hover:scale-105 
+            transform transition duration-200 md:hover:scale-105 
             h-[200px] md:max-w-sm p-6"
         // onClick={() => Router.push('/companies/[id]', `/companies/${id}`)}
         onClick={() => (modalOpen ? close() : open())}
