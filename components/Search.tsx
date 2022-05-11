@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 const Icon = () => {
   return (
@@ -28,10 +28,8 @@ type Props = {
 };
 
 const Search: React.FC<Props> = ({ handleSearch, searchVal }) => {
-  const inputRef = useRef(null);
-
   return (
-    <div ref={inputRef} className="mt-5 md:ml-5 md:mt-0">
+    <div className="mt-5 md:ml-5 md:mt-0">
       <div className="h-14 mx-0 flex sm:min-w-fit md:w-96 border-b border-slate-600">
         <Icon />
         <input
@@ -40,12 +38,6 @@ const Search: React.FC<Props> = ({ handleSearch, searchVal }) => {
           placeholder="Search companies"
           onChange={handleSearch}
           value={searchVal}
-          onFocus={() =>
-            inputRef.current.scrollIntoView({
-              block: 'start',
-              behavior: 'smooth',
-            })
-          }
         />
       </div>
     </div>
