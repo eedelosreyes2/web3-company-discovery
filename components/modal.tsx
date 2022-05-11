@@ -64,7 +64,7 @@ const Modal = ({ handleClose, company }) => {
       exit={{ opacity: 0 }}
       onClick={handleClose}
     >
-      <div className="flex flex-col items-center mt-20 px-3 sm:px-0 sm:space-y-6 sm:mb-9 ">
+      <div className="flex flex-col items-center my-5 md:mt-20 px-3 sm:px-0 sm:space-y-6 sm:mb-9 ">
         <motion.div className="flex justify-end w-full max-w-screen-sm">
           <div className="hidden sm:block">
             <CloseButton />
