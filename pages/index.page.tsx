@@ -155,28 +155,28 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
 
   return (
     <Layout>
-      <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-12">
+      <div className="flex flex-col md:flex-row justify-between md:mb-12">
         <h2 className="headline md:max-w-[486px]">
           Discover and learn <br />
           about web3 companies
         </h2>
-        <div
-          onClick={() => setMenu(!menu)}
-          className="col-responsive w-full flex justify-center py-4 mt-6 cursor-pointer text-slate-400 md:hidden"
-        >
-          {menu ? (
-            <ChevronUpIcon className="h-5 w-5" />
-          ) : (
-            <ChevronDownIcon className="h-5 w-5" />
-          )}
-        </div>
-        <Search
-          display={menu}
-          handleSearch={handleSearch}
-          searchVal={searchVal}
-        />
+
+        <Search handleSearch={handleSearch} searchVal={searchVal} />
       </div>
       <div className="flex flex-col md:flex-row justify-between">
+        <div className="w-full flex justify-end py-6 text-slate-400 md:hidden">
+          <div
+            onClick={() => setMenu(!menu)}
+            className="cursor-pointer w-24 flex justify-between items-center text-white text-sm p-2 pl-4 border border-slate-600 rounded"
+          >
+            Filter
+            {menu ? (
+              <ChevronUpIcon className="h-5 w-5" />
+            ) : (
+              <ChevronDownIcon className="h-5 w-5" />
+            )}
+          </div>
+        </div>
         <Filter
           display={menu}
           handleFilter={handleFilter}
