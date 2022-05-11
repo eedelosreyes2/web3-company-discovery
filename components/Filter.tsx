@@ -22,11 +22,13 @@ const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
   return (
     <div
       className={
-        'max-w-sm mx-auto w-full md:mx-0 md:w-52 pb-6 md:mr-6' +
+        'border-t border-slate-800 md:border-0 md:w-52 pb-6 md:mr-6' +
         (display ? '' : ' hidden md:block')
       }
     >
-      <h4 className="text-slate-50 pb-6 border-b border-slate-800">Filters</h4>
+      <h4 className="hidden md:block text-slate-50 pb-6 border-b border-slate-800">
+        Filters
+      </h4>
       <form>
         {categories.map((section) => (
           <Disclosure
@@ -36,7 +38,7 @@ const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
           >
             {({ open }) => (
               <>
-                <Disclosure.Button className="py-6 w-full flex justify-between text-sm text-slate-400">
+                <Disclosure.Button className="py-3 md:py-6 w-full flex justify-between text-sm text-slate-400">
                   <p className="text-slate-400">{section.name}</p>
                   {open ? (
                     <svg

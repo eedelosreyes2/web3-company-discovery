@@ -2,7 +2,7 @@ import React from 'react';
 
 const Icon = () => {
   return (
-    <div className="flex items-center pr-4">
+    <div className="flex items-center pr-3 md:pr-4">
       <svg
         width="16"
         height="16"
@@ -23,23 +23,18 @@ const Icon = () => {
 };
 
 type Props = {
-  display: boolean;
   handleSearch: React.ChangeEventHandler<HTMLInputElement>;
   searchVal: string;
 };
 
-const Search: React.FC<Props> = ({ display, handleSearch, searchVal }) => {
+const Search: React.FC<Props> = ({ handleSearch, searchVal }) => {
   return (
-    <div
-      className={
-        'col-responsive w-full md:ml-5' + (display ? '' : ' hidden md:block')
-      }
-    >
-      <div className="mx-auto h-14 max-w-sm sm:mx-0 flex sm:min-w-fit sm:w-96 border-b border-slate-600">
+    <div className="mt-5 md:ml-5 md:mt-0">
+      <div className="h-14 mx-0 flex sm:min-w-fit md:w-96 border-b border-slate-600">
         <Icon />
         <input
           type="text"
-          className="focus:placeholder:text-slate-400 placeholder:text-white bg-transparent outline-none w-full"
+          className="focus:placeholder:text-slate-400 placeholder:text-white text-sm md:text-md bg-transparent outline-none w-full"
           placeholder="Search companies"
           onChange={handleSearch}
           value={searchVal}
