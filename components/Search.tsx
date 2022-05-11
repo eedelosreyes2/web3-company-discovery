@@ -34,7 +34,7 @@ const Search: React.FC<Props> = ({ handleSearch, searchVal }) => {
         <Icon />
         <input
           type="text"
-          className="focus:placeholder:text-slate-400 placeholder:text-white text-sm md:text-md bg-transparent outline-none w-full"
+          className="focus:placeholder:text-slate-400 placeholder:text-white bg-transparent outline-none w-full"
           placeholder="Search companies"
           onChange={handleSearch}
           value={searchVal}
