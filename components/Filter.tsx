@@ -51,9 +51,9 @@ const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
                       <path
                         d="M18.25 12H5.75"
                         stroke="#94A3B8"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   ) : (
@@ -67,16 +67,16 @@ const Filter: React.FC<Props> = ({ display, handleFilter, categories }) => {
                       <path
                         d="M12 5.75V18.25"
                         stroke="#94A3B8"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M18.25 12H5.75"
                         stroke="#94A3B8"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   )}
