@@ -102,20 +102,20 @@ const Modal = ({ handleClose, company }) => {
                 <h3 className="text-xl sm:text-2xl mb-1">{name}</h3>
                 <p className="mb-3">{description}</p>
                 <ul className="flex flex-wrap">
-                  {blockchains &&
-                    blockchains
-                      .sort((a, b) => a['name'].localeCompare(b['name']))
-                      .map((blockchain) => (
-                        <li key={blockchain['id']} className="badge mr-2 mb-2">
-                          {blockchain['acronym']}
-                        </li>
-                      ))}
                   {tags &&
                     tags
                       .sort((a, b) => a['name'].localeCompare(b['name']))
                       .map((tag) => (
                         <li key={tag['id']} className="badge mr-2 mb-2">
                           {tag['name']}
+                        </li>
+                      ))}
+                  {blockchains &&
+                    blockchains
+                      .sort((a, b) => a['name'].localeCompare(b['name']))
+                      .map((blockchain) => (
+                        <li key={blockchain['id']} className="badge mr-2 mb-2">
+                          {blockchain['acronym']}
                         </li>
                       ))}
                 </ul>

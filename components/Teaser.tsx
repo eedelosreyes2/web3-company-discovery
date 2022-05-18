@@ -61,14 +61,6 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
         </div>
         <p className="line-clamp-2">{description}</p>
         <ul className="line-clamp-1 space-x-2">
-          {blockchains &&
-            blockchains
-              .sort((a, b) => a['name'].localeCompare(b['name']))
-              .map((blockchain) => (
-                <li key={blockchain['id']} className="badge">
-                  {blockchain['acronym']}
-                </li>
-              ))}
           {tags &&
             tags
               .sort((a, b) => a['name'].localeCompare(b['name']))
@@ -76,6 +68,14 @@ const Teaser: React.FC<{ company: CompanyProps }> = ({ company }) => {
                 <div key={tag['id']} className="badge">
                   {tag['name']}
                 </div>
+              ))}
+          {blockchains &&
+            blockchains
+              .sort((a, b) => a['name'].localeCompare(b['name']))
+              .map((blockchain) => (
+                <li key={blockchain['id']} className="badge">
+                  {blockchain['acronym']}
+                </li>
               ))}
         </ul>
       </div>
