@@ -11,7 +11,7 @@ function App({ Component, pageProps }) {
     //  - Do not include https://
     //  - This must be an exact match of your domain.
     //  - If you're using www. for your domain, make sure you include that here.
-    Fathom.load(NEXT_PUBLIC_FATHOM_CODE, {
+    Fathom.load(process.env.NEXT_PUBLIC_FATHOM_CODE, {
       includedDomains: ['web3discovery.me', 'localhost:3000'],
     });
 
