@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import Search from "../components/Search";
 import Teaser from "../components/Teaser";
 import Filter from "../components/Filter";
+declare const window: any;
 
 export const getStaticProps: GetStaticProps = async () => {
     const companies = await prisma.company.findMany({
@@ -58,10 +59,10 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
             const d = document;
             const s = d.createElement("script");
             s.src = "https://client.crisp.chat/l.js";
-            s.async = 1;
+            s.async = true;
             d.getElementsByTagName("body")[0].appendChild(s);
         })();
-    });
+    }, []);
 
     const companyCategoryHelper = (
         section: Blockchain[] | Tag[],
