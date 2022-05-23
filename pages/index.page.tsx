@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
+import { hotjar } from 'react-hotjar'
+
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
 import Search from "../components/Search";
@@ -51,8 +53,11 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     const [searchVal, setSearchVal] = useState("");
     const [menu, setMenu] = useState(false);
 
-    // chatbot integration
     useEffect(() => {
+        // hotjar initialization
+        hotjar.initialize(parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID), parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV))
+
+        // chatbot integration
         window.$crisp = [];
         window.CRISP_WEBSITE_ID = "891fbf71-baf0-45a5-ba16-22172bbd74cf";
         (() => {
