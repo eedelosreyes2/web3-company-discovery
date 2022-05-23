@@ -59,7 +59,6 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         hotjar.initialize(parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID), parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV))
 
         // Fathom analytics initialization
-        console.log(process.env.NEXT_PUBLIC_FATHOM_CODE)
         Fathom.load(process.env.NEXT_PUBLIC_FATHOM_CODE, {
           includedDomains: ['web3discovery.me'],
         });
