@@ -12,7 +12,7 @@ function App({ Component, pageProps }) {
     //  - This must be an exact match of your domain.
     //  - If you're using www. for your domain, make sure you include that here.
     Fathom.load(NEXT_PUBLIC_FATHOM_CODE, {
-      includedDomains: ['web3-company-discovery.vercel.app', 'localhost:3000'],
+      includedDomains: ['web3discovery.me', 'localhost:3000'],
     });
 
     function onRouteChangeComplete() {
