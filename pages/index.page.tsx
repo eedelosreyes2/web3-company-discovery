@@ -46,7 +46,6 @@ type CompanyProps = {
 };
 
 const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
-    console.log('test')
     const [filteredResults, setFilteredResults] = useState([]);
     const [results, setResults] = useState(companies);
     const [categories, setCategories] = useState([]);
