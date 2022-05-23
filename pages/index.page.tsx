@@ -54,10 +54,6 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     const [menu, setMenu] = useState(false);
 
     useEffect(() => {
-        console.log(process.env.NEXT_PUBLIC_HOTJAR_ID)
-        console.log(process.env.NEXT_PUBLIC_HOTJAR_SV)
-        console.log(parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID))
-        console.log(parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV))
         // hotjar initialization
         hotjar.initialize(parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID), parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV))
 
