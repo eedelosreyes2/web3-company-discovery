@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
 import { hotjar } from 'react-hotjar'
+import * as Fathom from 'fathom-client';
 
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
@@ -56,6 +57,12 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     useEffect(() => {
         // hotjar initialization
         hotjar.initialize(parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID), parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV))
+
+        // Fathom analytics initialization
+        console.log(process.env.NEXT_PUBLIC_FATHOM_CODE)
+        Fathom.load(process.env.NEXT_PUBLIC_FATHOM_CODE, {
+          includedDomains: ['web3discovery.me'],
+        });
 
         // chatbot integration
         window.$crisp = [];
