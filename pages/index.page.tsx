@@ -94,14 +94,14 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
         const newCategories = [];
         newCategories.push({
             id: "blockchain",
-            name: "Blockchain",
+            name: "Blockchains",
             options: compObj.blockchains.map((b) => {
                 return { value: b, label: b, checked: false };
             }),
         });
         newCategories.push({
             id: "tags",
-            name: "Tags",
+            name: "Categories",
             options: compObj.tags.map((b) => {
                 return { value: b, label: b, checked: false };
             }),
@@ -207,6 +207,9 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
                             ))}
                 </div>
             </div>
+            {/* <div className="absolute inset-0 overflow-hidden -z-50">
+                <div className="box background-gradient"></div>
+            </div> */}
         </Layout>
     );
 };
