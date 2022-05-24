@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { GetStaticProps } from "next";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
+import { hotjar } from 'react-hotjar'
+import * as Fathom from 'fathom-client';
+
 import prisma from "../lib/prisma";
 import Layout from "../components/Layout";
 import Search from "../components/Search";
 import Teaser from "../components/Teaser";
 import Filter from "../components/Filter";
+declare const window: any;
 
 export const getStaticProps: GetStaticProps = async () => {
     const companies = await prisma.company.findMany({
@@ -50,18 +54,26 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
     const [searchVal, setSearchVal] = useState("");
     const [menu, setMenu] = useState(false);
 
-    // chatbot integration
     useEffect(() => {
+        // hotjar initialization
+        hotjar.initialize(parseInt(process.env.NEXT_PUBLIC_HOTJAR_ID), parseInt(process.env.NEXT_PUBLIC_HOTJAR_SV))
+
+        // Fathom analytics initialization
+        Fathom.load(process.env.NEXT_PUBLIC_FATHOM_CODE, {
+          includedDomains: ['web3discovery.me'],
+        });
+
+        // chatbot integration
         window.$crisp = [];
         window.CRISP_WEBSITE_ID = "891fbf71-baf0-45a5-ba16-22172bbd74cf";
         (() => {
             const d = document;
             const s = d.createElement("script");
             s.src = "https://client.crisp.chat/l.js";
-            s.async = 1;
+            s.async = true;
             d.getElementsByTagName("body")[0].appendChild(s);
         })();
-    });
+    }, []);
 
     const companyCategoryHelper = (
         section: Blockchain[] | Tag[],
@@ -161,7 +173,7 @@ const Home: React.FC<{ companies: CompanyProps[] }> = ({ companies }) => {
                 ...companies[i].tags.map((t) => t.name),
                 ...companies[i].blockchains.map((b) => b.name),
             ];
-            if (newFilters.every((f) => companyFilters.includes(f))) {
+            if (newFilters.some((f) => companyFilters.includes(f))) {
                 filteredResults.push(companies[i]);
             }
         }
