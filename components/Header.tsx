@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { typeform } from "../pages/data";
+import { about } from "../pages/data";
 
 const Header: React.FC = () => {
     const router = useRouter();
@@ -89,14 +88,14 @@ const Header: React.FC = () => {
                     </svg>
                 </a>
             </Link>
-            <Link href={typeform}>
+            <Link href={about}>
                 <a
                     className="bold text-slate-400 text-sm"
                     target="_blank"
                     rel="noopener noreferrer"
                     data-active={isActive("/")}
                 >
-                    Submit Project
+                    About Us
                 </a>
             </Link>
         </nav>
